@@ -1,0 +1,17 @@
+services:
+  notification:
+    container_name: wenlarge_notification_app
+    env_file:
+      - .env
+    build:
+      context: .
+    ports:
+      - '50007:50007'
+    environment:
+      KAFKA_BROKER: kafka:29092
+    networks:
+      - wenlarge-network
+
+networks:
+  wenlarge-network:
+    external: true
